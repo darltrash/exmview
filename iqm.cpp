@@ -1,5 +1,6 @@
 #include "iqm.hpp"
 
+#include <stdint.h>
 #include <map>
 #include <cstring>
 #include <cstdio>

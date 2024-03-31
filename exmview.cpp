@@ -1,10 +1,10 @@
-﻿#include <GL/gl3w.h>
+﻿#include "gl3w/gl3w.h"
 #include <GLFW/glfw3.h>
 //doesn't work right, disabled
 //#define NANOVG_LINEAR_GAMMA
 #define NANOVG_GL3_IMPLEMENTATION
-#include "nanovg/src/nanovg.h"
-#include "nanovg/src/nanovg_gl.h"
+#include "nanovg/nanovg.h"
+#include "nanovg/nanovg_gl.h"
 #include <string>
 #include <algorithm>
 #include <vector>
@@ -121,7 +121,7 @@ tfx_transient_buffer draw_quad(float x, float y, float w, float h, float z = 0.0
 	const float c[4] = { floorf(x + w), floorf(y + h), 1.0f, cw }; // TR
 	const float d[4] = { floorf(x), floorf(y + h), 0.0f, cw }; // TL
 	const float *v[4] = { a, b, c, d };
-	const uint8_t indices[6] = { 0, cw < 0.5f ? 1 : 3, 2, 0, 2, cw < 0.5f ? 3 : 1 };
+	const uint8_t indices[6] = { 0, static_cast<uint8_t>(cw < 0.5f ? 1 : 3), 2, 0, 2, static_cast<uint8_t>(cw < 0.5f ? 3 : 1) };
 
 	for (unsigned i = 0; i < 6; i++) {
 		uint8_t index = indices[i];
